@@ -93,6 +93,8 @@ bool Preprocess(const path &in_file, const path &out_file, const vector<path> &i
   bool result = PreprocessRecursive(strstream, ostrstream, in_file, include_directories);
 
   ofstream ost(out_file);
+  if (!ost.is_open())
+    return false;
   ost << ostrstream.str();
 
   return result;
